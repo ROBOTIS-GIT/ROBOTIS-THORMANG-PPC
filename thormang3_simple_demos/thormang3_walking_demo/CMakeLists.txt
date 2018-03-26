@@ -4,6 +4,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(thormang3_walking_demo)
 
+set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")
+
 ################################################################################
 # Packages
 ################################################################################
@@ -14,6 +16,10 @@ find_package(catkin REQUIRED COMPONENTS
   robotis_controller_msgs
   thormang3_walking_module_msgs
 )
+
+set(ENV{PKG_CONFIG_PATH} "$ENV{PKG_CONFIG_PATH}:${CATKIN_DEVEL_PREFIX}/lib/pkgconfig")
+find_package(PkgConfig)
+pkg_check_modules(yaml_cpp yaml-cpp REQUIRED)
 
 ################################################################################
 # Declare ROS messages, services and actions
@@ -39,6 +45,7 @@ catkin_package(
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
+  ${yaml_cpp_INCLUDE_DIRS}
 )
 
 add_executable(thormang3_walking_demo
@@ -48,10 +55,7 @@ add_executable(thormang3_walking_demo
 
 add_dependencies(thormang3_walking_demo ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-target_link_libraries(thormang3_walking_demo
-  yaml-cpp
-  ${catkin_LIBRARIES}
-)
+target_link_libraries(thormang3_walking_demo ${yaml_cpp_LIBRARIES} ${catkin_LIBRARIES})
 
 
 ################################################################################
