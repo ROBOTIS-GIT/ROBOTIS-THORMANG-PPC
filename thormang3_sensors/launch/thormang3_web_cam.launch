@@ -1,29 +1,26 @@
 <?xml version="1.0"?>
-
 <launch>
+  <!-- center camera -->
+  <node pkg="uvc_camera" type="uvc_camera_node" name="uvc_camera_center_node"  >
+    <param name="frame_id" type="string" value="cam_link" />
+    <param name="device" type="string" value="/dev/WebCam" />
+    <param name="width" type="int" value="640" />
+    <param name="height" type="int" value="480" />
+    <param name="fps" type="int" value="10" />
+    <param name="auto_focus" type="bool" value="False" />
+    <param name="focus_absolute" type="int" value="0" />
+    <param name="auto_white_balance" value="0" />
+    <param name="auto_exposure" value="0" />
+    <param name="brightness" value="120" />
+    <remap from="/image_raw" to="/robotis/sensor/camera/image_raw"/>
+    <remap from="/camera_info" to="/robotis/sensor/camera/camera_info"/>
+  </node>
 
-    <!-- center camera -->
-    <node pkg="uvc_camera" type="uvc_camera_node" name="uvc_camera_center_node"  >
-        <param name="frame_id" type="string" value="cam_link" />
-        <param name="device" type="string" value="/dev/WebCam" />
-        <param name="width" type="int" value="640" />
-        <param name="height" type="int" value="480" />
-        <param name="fps" type="int" value="10" />
-    	<param name="auto_focus" type="bool" value="False" />
-    	<param name="focus_absolute" type="int" value="0" />
-        <param name="auto_white_balance" value="0" />
-        <param name="auto_exposure" value="0" />
-        <param name="brightness" value="120" />
-        <remap from="/image_raw" to="/robotis/sensor/camera/image_raw"/>
-        <remap from="/camera_info" to="/robotis/sensor/camera/camera_info"/>
-    </node>
-
-    <!-- other camera -->
-    <!-- <node pkg="uvc_camera" type="uvc_camera_node" name="uvc_camera_second_node" >
-        <param name="frame_id" type="string" value="head_right_camera_link" />
-        <param name="device" type="string" value="/dev/video2" />
-        <remap from="/image_raw" to="/ppc/camera_right/image_raw"/>
-        <remap from="/camera_info" to="/ppc/camera_right/camera_info"/>
-    </node> -->
-
+  <!-- other camera -->
+  <!-- <node pkg="uvc_camera" type="uvc_camera_node" name="uvc_camera_second_node" >
+    <param name="frame_id" type="string" value="head_right_camera_link" />
+    <param name="device" type="string" value="/dev/video2" />
+    <remap from="/image_raw" to="/ppc/camera_right/image_raw"/>
+    <remap from="/camera_info" to="/ppc/camera_right/camera_info"/>
+  </node> -->
 </launch>

@@ -1,29 +1,27 @@
 <?xml version="1.0"?>
-
 <launch>
-    <arg name="filter_input_scan" default="/robotis/sensor/scan" />
-    <arg name="filter_output_scan" default="/robotis/sensor/scan_filtered" />
-    <arg name="assembler_frame" default="pelvis_link" />
-    <arg name="robot_joint_states" default="/robotis/present_joint_states" />
-    <arg name="use_goal_model" default="false" />
+  <arg name="filter_input_scan" default="/robotis/sensor/scan" />
+  <arg name="filter_output_scan" default="/robotis/sensor/scan_filtered" />
+  <arg name="assembler_frame" default="pelvis_link" />
+  <arg name="robot_joint_states" default="/robotis/present_joint_states" />
+  <arg name="use_goal_model" default="false" />
 
-    <!-- filtering laserscan -->
-    <node pkg="laser_filters" type="scan_to_scan_filter_chain" output="screen" name="laser_filter">
-        <rosparam command="load" file="$(find thormang3_sensors)/filters/shadow_filter.yaml" />
-        <remap from="scan" to="$(arg filter_input_scan)" />
-        <remap from="scan_filtered" to="$(arg filter_output_scan)" />
-    </node>
+  <!-- filtering laserscan -->
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain" name="laser_filter" output="screen">
+    <rosparam command="load" file="$(find thormang3_sensors)/filters/shadow_filter.yaml" />
+    <remap from="scan" to="$(arg filter_input_scan)" />
+    <remap from="scan_filtered" to="$(arg filter_output_scan)" />
+  </node>
 
-    <!-- service to assemble laserscan to pointcloud -->
-    <node type="laser_scan_assembler" pkg="laser_assembler" name="my_assembler_chest">
-        <remap from="scan" to="$(arg filter_output_scan)"/>
-        <param name="max_scans" type="int" value="600" />
-        <param name="fixed_frame" type="string" value="$(arg assembler_frame)" />
-        <param name="ignore_laser_skew" type="bool" value="true" />
-        <remap from="/assemble_scans2" to="/robotis/sensor/service/assemble_scans2" />
-    </node>
+  <!-- service to assemble laserscan to pointcloud -->
+  <node pkg="laser_assembler" type="laser_scan_assembler" name="my_assembler_chest">
+    <remap from="scan" to="$(arg filter_output_scan)"/>
+    <param name="max_scans" type="int" value="600" />
+    <param name="fixed_frame" type="string" value="$(arg assembler_frame)" />
+    <param name="ignore_laser_skew" type="bool" value="true" />
+    <remap from="/assemble_scans2" to="/robotis/sensor/service/assemble_scans2" />
+  </node>
 
-    <!-- assemble laserscan -->
-    <node pkg="thormang3_sensors" type="assemble_laser_node" output="screen" name="laser_assem" />
-
+  <!-- assemble laserscan -->
+  <node pkg="thormang3_sensors" type="assemble_laser_node" output="screen" name="laser_assem" />
 </launch>

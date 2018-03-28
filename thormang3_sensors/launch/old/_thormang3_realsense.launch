@@ -1,22 +1,20 @@
 <?xml version="1.0"?>
-
 <launch>
-
-	<arg name="cHeight" default="720" />
-	<arg name="cWidth" default="1280" />
-	<arg name="dHeight" default="360" />
-	<arg name="dWidth" default="480" />
-	<arg name="colorCamera" default="/dev/video1" />
-	<arg name="depthCamera" default="/dev/video2" />
-	<arg name="pcScale" default="1000" />
-	<arg name="enableDepth" default="1" />
-	<arg name="enableColor" default="1" />
-	<arg name="directory" default="0" />
-	<arg name="playFromFile" default="0" />
-	<arg name="recordToFile" default="0" />
-	<arg name="serialNumber" default="-1" />
+  <arg name="cHeight" default="720" />
+  <arg name="cWidth" default="1280" />
+  <arg name="dHeight" default="360" />
+  <arg name="dWidth" default="480" />
+  <arg name="colorCamera" default="/dev/video1" />
+  <arg name="depthCamera" default="/dev/video2" />
+  <arg name="pcScale" default="1000" />
+  <arg name="enableDepth" default="1" />
+  <arg name="enableColor" default="1" />
+  <arg name="directory" default="0" />
+  <arg name="playFromFile" default="0" />
+  <arg name="recordToFile" default="0" />
+  <arg name="serialNumber" default="-1" />
 	
-  	<node pkg="nodelet" type="nodelet" name="standalone_nodelet"  args="manager" output="screen"/>
+  <node pkg="nodelet" type="nodelet" name="standalone_nodelet"  args="manager" output="screen"/>
   	
 	<node pkg="nodelet" type="nodelet" name="CR200Nodelet"
         args="load r200_ros/CR200Nodelet standalone_nodelet 
@@ -34,5 +32,4 @@
         recordToFile $(arg recordToFile)
         serialNumber $(arg serialNumber)">
   	</node>
-  
 </launch> 

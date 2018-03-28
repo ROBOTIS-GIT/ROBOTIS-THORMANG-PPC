@@ -1,27 +1,26 @@
 <?xml version="1.0"?>
-<package>
+<package format="2">
   <name>thormang3_walking_demo</name>
-  <version>0.1.2</version>
+  <version>0.2.0</version>
   <description>
     The thormang3_walking_demo package
     This package describes how to use thormang3_walking_module.
   </description>
-  <license>BSD</license>
+  <license>Apache 2.0</license>
   <author email="zerom@robotis.com">Zerom</author>
-  <author email="hjsong@robotis.com">Jay Song</author>
   <author email="sch@robotis.com">SCH</author>
   <author email="kmjung@robotis.com">Kayman</author>
+  <author>Jay Song</author>
   <maintainer email="pyo@robotis.com">Pyo</maintainer>
-  <url type="bugtracker">https://github.com/ROBOTIS-GIT/ROBOTIS-THORMANG-PPC/issues</url>
+  <url type="website">http://wiki.ros.org/thormang3_walking_demo</url>
+  <url type="emanual">http://emanual.robotis.com/docs/en/platform/thormang3/introduction/</url>
   <url type="repository">https://github.com/ROBOTIS-GIT/ROBOTIS-THORMANG-PPC</url>
-  <url type="website">http://wiki.ros.org/thormang3_ppc</url>
+  <url type="bugtracker">https://github.com/ROBOTIS-GIT/ROBOTIS-THORMANG-PPC/issues</url>
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>roscpp</build_depend>
-  <build_depend>std_msgs</build_depend>
-  <build_depend>robotis_controller_msgs</build_depend>
-  <build_depend>thormang3_walking_module_msgs</build_depend>
-  <build_depend>yaml-cpp</build_depend>
-  <run_depend>roscpp</run_depend>
-  <run_depend>std_msgs</run_depend>
-  <run_depend>yaml-cpp</run_depend>
+  <depend>roscpp</depend>
+  <depend>roslib</depend>
+  <depend>std_msgs</depend>
+  <depend>robotis_controller_msgs</depend>
+  <depend>thormang3_walking_module_msgs</depend>
+  <depend>yaml-cpp</depend>
 </package>
