@@ -1,5 +1,5 @@
 ################################################################################
-# CMake
+# Set minimum required version of cmake, project name and compile options
 ################################################################################
 cmake_minimum_required(VERSION 2.8.3)
 project(thormang3_manipulation_demo)
@@ -15,6 +15,10 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 ################################################################################
+# Setup for python modules and scripts
+################################################################################
+
+################################################################################
 # Declare ROS messages, services and actions
 ################################################################################
 
@@ -23,12 +27,10 @@ find_package(catkin REQUIRED COMPONENTS
 ################################################################################
 
 ################################################################################
-# Catkin specific configuration
+# Declare catkin specific configuration to be passed to dependent projects
 ################################################################################
 catkin_package(
-  CATKIN_DEPENDS
-  roscpp
-  std_msgs
+  CATKIN_DEPENDS roscpp std_msgs robotis_controller_msgs thormang3_manipulation_module_msgs
 )
 
 ################################################################################
@@ -38,22 +40,14 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(thormang3_manipulation_demo 
-	src/thormang3_manipulation_demo.cpp
-)
-
+add_executable(thormang3_manipulation_demo src/thormang3_manipulation_demo.cpp)
 add_dependencies(thormang3_manipulation_demo ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
-target_link_libraries(thormang3_manipulation_demo
-  ${catkin_LIBRARIES}
-)
+target_link_libraries(thormang3_manipulation_demo ${catkin_LIBRARIES})
 
 ################################################################################
 # Install
 ################################################################################
 install(TARGETS thormang3_manipulation_demo
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
