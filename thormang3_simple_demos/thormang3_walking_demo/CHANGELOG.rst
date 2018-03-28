@@ -2,6 +2,13 @@
 Changelog for package thormang3_walking_demo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.2.0 (2018-03-28)
+------------------
+* modified cmake & package for yaml-cpp
+* changed package.xml format to v2
+* refactoring to release
+* Contributors: Pyo, SCH
+
 0.1.2 (2017-05-23)
 ------------------
 * updated cmake file for ros install

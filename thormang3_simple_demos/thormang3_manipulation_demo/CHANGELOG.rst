@@ -2,6 +2,12 @@
 Changelog for package thormang3_manipulation_demo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.2.0 (2018-03-28)
+------------------
+* changed package.xml format to v2
+* refactoring to release
+* Contributors: Pyo
+
 0.1.2 (2017-05-23)
 ------------------
 * updated cmake file for ros install
@@ -10,7 +16,7 @@ Changelog for package thormang3_manipulation_demo
 0.1.1 (2017-04-24)
 ------------------
 * added option for dependencies
-* fixed setmode msg
+* modified setmode msg
 * Contributors: Jay Song, Zerom, SCH
 
 0.1.0 (2016-08-17)
