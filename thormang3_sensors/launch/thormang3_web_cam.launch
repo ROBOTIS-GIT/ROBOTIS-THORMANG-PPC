@@ -3,7 +3,7 @@
   <!-- center camera -->
   <node pkg="uvc_camera" type="uvc_camera_node" name="uvc_camera_center_node"  >
     <param name="frame_id" type="string" value="cam_link" />
-    <param name="device" type="string" value="/dev/WebCam" />
+    <param name="device" type="string" value="/dev/video3" />
     <param name="width" type="int" value="640" />
     <param name="height" type="int" value="480" />
     <param name="fps" type="int" value="10" />
